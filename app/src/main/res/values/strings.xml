@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">M2MApp</string>
+    <string name="tab_text_1">Streaming</string>
+    <string name="tab_text_2">Device Details</string>
+    <string name="tab_text_3">Streamed Packets</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_subscribed">Successfully subscribed</string>
+    <string name="msg_subscribe_failed"> Failed Subscription</string>
+    <string name="default_notification_channel_id"> default_notification_channel_id</string>
+    <string name="fcm_message">fcm_message</string>
+    <string name="msg_token_fmt">token_message</string>
+
+    <string name="title_activity_udptcp">SocSend</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_udp">UDP</string>
+    <string name="title_tcp">TCP</string>
+    <string name="ip_address">IP Address</string>
+    <string name="port">Port</string>
+    <string name="action_clear">Clear</string>
+    <string name="send_as">Send as</string>
+    <string name="bytes">Bytes</string>
+    <string name="string">String</string>
+    <string name="message">Message</string>
+    <string name="udp_message_instructions">When using \"Send as bytes\" the message field needs to contain byte values in range (0-255) or (00 to FF in case of hex) separated by space.</string>
+    <string name="hex">Hex</string>
+    <string name="send">Send</string>
+    <string name="received">Receive</string>
+    <string name="ip_blank">IP Address is blank</string>
+    <string name="ip_pattern_incorrect">IP pattern incorrect</string>
+    <string name="port_empty">Port is empty</string>
+    <string name="port_value_invalid">Value of port is invalid</string>
+    <string name="port_not_integer">Port is not a valid integer</string>
+    <string name="message_invalid">Message invalid</string>
+    <string name="sent">Sent</string>
+    <string name="expect_reply">Expect reply</string>
+    <string name="recd_reply">Received reply</string>
+    <string name="refresh">Refresh</string>
+</resources>
