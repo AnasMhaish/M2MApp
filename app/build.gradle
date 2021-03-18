@@ -34,16 +34,21 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.google.firebase:firebase-auth:19.3.0'
-    implementation 'com.google.firebase:firebase-core:17.3.0'
-    implementation 'com.google.firebase:firebase-database:19.2.1'
-    implementation 'com.google.firebase:firebase-messaging:20.1.5'
+    implementation 'com.google.firebase:firebase-auth:20.0.0'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.firebase:firebase-database:19.5.1'
+    implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
-    implementation "com.google.firebase:firebase-storage:19.1.1"
+    implementation "com.google.firebase:firebase-storage:19.2.0"
 
     implementation 'androidx.work:work-runtime:2.3.4'
 
     implementation 'com.koushikdutta.async:androidasync:2.1.7'
+
+    implementation "com.esotericsoftware:kryo:3.0.3"
+    implementation ("com.github.anubiann00b:kryonet:b6b71d4") {
+        exclude module : 'kryo'
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'

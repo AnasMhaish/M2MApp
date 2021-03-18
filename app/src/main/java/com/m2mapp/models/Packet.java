@@ -6,9 +6,14 @@ public class Packet implements Serializable {
     public  String OwnerIP;
     public String Name;
     public byte[] Data;
+    //public String DataStr;
 
     //0 for normal node
     //1 for verifier node
     public int Type;
+
+    public Packet() {
+
+    }
 
 }

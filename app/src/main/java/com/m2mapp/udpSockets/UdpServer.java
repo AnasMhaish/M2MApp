@@ -1,7 +1,10 @@
 package com.m2mapp.udpSockets;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.location.SettingInjectorService;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 
 import com.koushikdutta.async.AsyncDatagramSocket;
@@ -10,6 +13,7 @@ import com.koushikdutta.async.ByteBufferList;
 import com.koushikdutta.async.DataEmitter;
 import com.koushikdutta.async.callback.CompletedCallback;
 import com.koushikdutta.async.callback.DataCallback;
+import com.m2mapp.MainActivity;
 import com.m2mapp.models.IPPacket;
 import com.m2mapp.models.Packet;
 import com.m2mapp.models.Packettt;
@@ -22,6 +26,7 @@ import com.m2mapp.utilities.Utilities;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
@@ -37,15 +42,19 @@ public class UdpServer {
     private InetSocketAddress host;
     private AsyncDatagramSocket asyncDatagramSocket;
     private Activity activity;
-
+    private  WifiManager wifi;
     public UdpServer(Activity activity, String host, int port) {
         this.host = new InetSocketAddress(host, port);
         this.activity = activity;
+
+        this.wifi = (WifiManager) activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager.MulticastLock lock = wifi.createMulticastLock("lock");
+        lock.acquire();
+
         setup();
     }
 
     private void setup() {
-
         try {
             asyncDatagramSocket = AsyncServer.getDefault().openDatagram(host, true);
         } catch (IOException e) {
@@ -84,7 +93,13 @@ public class UdpServer {
                                try {
                                    MessageDigest md = MessageDigest.getInstance("MD5");
 
-                                   byte[] hashed = new byte[12];
+                                   AssetManager assetManager = activity.getApplicationContext().getAssets();
+                                   final String fileName =  receivedPacket.Name;
+                                   String filePath = Utilities.SelectedNode + '/' + fileName;
+                                   final InputStream inputStream = assetManager.open(filePath);
+                                   final byte[] buffer = new byte[inputStream.available()];
+
+                                   byte[] hashed = md.digest(buffer);
                                    if (BlockChainService.Verifier.PacketsDataHashDict.containsKey(receivedPacket.Name)) {
                                        BlockChainService.Verifier.PacketsDataHashDict.put(receivedPacket.Name, hashed);
                                    } else {

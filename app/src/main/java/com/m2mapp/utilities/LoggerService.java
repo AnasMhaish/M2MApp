@@ -12,11 +12,13 @@ public class LoggerService {
     public static void appendLog(String text, String filePath)
     {
         boolean success = false;
-        File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/M2M");
+        //File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/M2M");
+        File dir = new File(Utilities.ApplicationContext.getExternalFilesDir(null).getPath()+"/M2M");
         if (!dir.exists()){
             success = dir.mkdir();
         }
-        File logFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/M2M"+ filePath);
+        //File logFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/M2M"+ filePath + Utilities.SelectedPacketSize);
+        File logFile = new File(Utilities.ApplicationContext.getExternalFilesDir(null).getPath()+"/M2M"+ filePath + Utilities.SelectedPacketSize);
         if (!logFile.exists())
         {
             try

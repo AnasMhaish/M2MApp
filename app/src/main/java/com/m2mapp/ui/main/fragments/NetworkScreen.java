@@ -111,7 +111,7 @@ public class NetworkScreen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_network_screen, container, false);
-/*
+
         //battery level indication
         batteryTxt = rootView.findViewById(R.id.batteryLevel);
         getActivity().registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -130,7 +130,7 @@ public class NetworkScreen extends Fragment {
 
         getActivity().registerReceiver(this.myWifiReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         getActivity().registerReceiver(this.myRssiChangeReceiver, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
-*/
+
         return rootView;
     }
 
