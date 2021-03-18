@@ -38,12 +38,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 StreamingScreen tab1 = new StreamingScreen();
                 return tab1;
+                /*
             case 1:
                 NetworkScreen tab2 = new NetworkScreen();
                 return tab2;
             case 2:
                 StreamedScreen tab3 = new StreamedScreen();
                 return  tab3;
+                 */
             default:
                 return null;
         }
@@ -58,6 +60,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 1;
     }
 }

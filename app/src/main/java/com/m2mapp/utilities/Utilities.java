@@ -12,6 +12,12 @@ public class Utilities {
 
     public static String MyIP = "";
 
+    public static String SelectedPacketSize = "";
+
+    public static String SelectedNode = "";
+
+    public static Context ApplicationContext;
+
     public static String GetMyIP(Context context) {
         if (MyIP != "")
             return MyIP;

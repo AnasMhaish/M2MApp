@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,6 +112,76 @@
             android:text="Don't have account? Sign Up"
             android:textColor="@color/colorAccent"
             android:textSize="18sp" />
+
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:weightSum="1"
+            android:id="@+id/radioGroupPackatSizes"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="15"
+                android:id="@+id/rb15"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="25dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="30"
+                android:id="@+id/rb30"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="25dp"
+                android:layout_weight="0.13" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="50"
+                android:id="@+id/rb50"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="25dp"
+                android:layout_weight="0.13" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="120dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:weightSum="1"
+            android:id="@+id/radioGroupNodes"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Node1"
+                android:id="@+id/rbNode1"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="25dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Node2"
+                android:id="@+id/rbNode2"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="25dp"
+                android:layout_weight="0.13" />
+        </RadioGroup>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

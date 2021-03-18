@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.m2mapp.utilities.Utilities;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -22,11 +24,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     EditText email,password;
     ProgressBar progressBar;
-
+    RadioGroup radioGroupPacketSize;
+    RadioGroup radioGroupNode;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        radioGroupPacketSize=(RadioGroup)findViewById(R.id.radioGroupPackatSizes);
+        radioGroupPacketSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId)
+                {
+                    case R.id.rb15:
+                        Utilities.SelectedPacketSize = "15";
+                        break;
+                    case R.id.rb30:
+                        Utilities.SelectedPacketSize = "30";
+                        break;
+                    case R.id.rb50:
+                        Utilities.SelectedPacketSize = "50";
+                        break;
+                }
+            }
+        });
+
+        radioGroupNode=(RadioGroup)findViewById(R.id.radioGroupNodes);
+        radioGroupNode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId)
+                {
+                    case R.id.rbNode1:
+                        Utilities.SelectedNode = "Node1";
+                        break;
+                    case R.id.rbNode2:
+                        Utilities.SelectedNode = "Node2";
+                        break;
+                }
+            }
+        });
+
+
 
         findViewById(R.id.login_button).setOnClickListener(this);
         findViewById(R.id.signup_link).setOnClickListener(this);
@@ -52,7 +91,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 myIntent.putExtra("SKIP", true);
                 startActivity(myIntent);
                 break;
-
         }
     }
 

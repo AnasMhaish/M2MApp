@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Client;
 import com.m2mapp.models.Packet;
 import com.m2mapp.udpSockets.UdpClient;
 import com.m2mapp.utilities.BlockChainService;
@@ -47,13 +49,23 @@ public class RequestPacketsReceiver extends BroadcastReceiver {
                             packet.Name = requestPacketName;
                             // Serialize to a byte array
                             try {
+                                /*
                                 ByteArrayOutputStream bStream = new ByteArrayOutputStream();
                                 ObjectOutput oo = null;
                                 oo = new ObjectOutputStream(bStream);
                                 oo.writeObject(packet);
                                 oo.close();
-
-                                UdpClient.SendPacket(bStream.toByteArray(), ownerIP, SharedFinals.UDP_REQUEST_PACKET_FROM_NODE_PORT, true);
+                                */
+                                //UdpClient.SendPacket(bStream.toByteArray(), ownerIP, SharedFinals.UDP_REQUEST_PACKET_FROM_NODE_PORT, true);
+                                //if (SharedFinals.UDP_REQUEST_PACKET_FROM_NODE_PORT_CLIENT == null) {
+                                Client cc = new Client(80000, 80000);
+                                cc.start();
+                                Kryo kryo = cc.getKryo();
+                                kryo.register(Packet.class);
+                                kryo.register(byte[].class);
+                                //}
+                                cc.connect(5000, BlockChainService.Verifier.NodeIP, SharedFinals.UDP_REQUEST_PACKET_FROM_NODE_PORT, SharedFinals.UDP_REQUEST_PACKET_FROM_NODE_PORT);
+                                cc.sendUDP(packet);
 
                                 System.out.println("[Request Packet] from " + Utilities.MyIP + " requesting from " + ownerIP + " packet name" + requestPacketName);
 
