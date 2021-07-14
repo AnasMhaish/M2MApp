@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                         public void received (Connection connection, Object object) {
                             if (object instanceof Packet) {
                                 Packet request = (Packet)object;
-                                BlockChainService.ReceivePacketToVerifier(request);
+                                BlockChainService.ReceivePacketToVerifier(request, getApplicationContext());
                             }
                         }
                     });
